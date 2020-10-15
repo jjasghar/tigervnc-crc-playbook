@@ -67,3 +67,4 @@ limitations under the License.
 ```
 
 [vncviewer]: https://www.realvnc.com/en/connect/download/viewer/
+[crc]: https://github.com/code-ready/crc
