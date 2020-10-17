@@ -41,6 +41,30 @@
     - name: run the daemon reload
       shell: systemctl daemon-reload
 
+    - name: allow port 5801 into the machine
+      iptables:
+        chain: INPUT
+        protocol: tcp
+        ctstate: NEW
+        destination_port: 5801
+        jump: ACCEPT
+
+    - name: allow port 5901 into the machine
+      iptables:
+        chain: INPUT
+        protocol: tcp
+        ctstate: NEW
+        destination_port: 5901
+        jump: ACCEPT
+
+    - name: allow port 6001 into the machine
+      iptables:
+        chain: INPUT
+        protocol: tcp
+        ctstate: NEW
+        destination_port: 6001
+        jump: ACCEPT
+
     - name: pull down crc to the machine
       unarchive:
         src: https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz
