@@ -11,6 +11,7 @@ on it so you can connect to the it.
 edit the `hosts` for your target machine.
 
 2. Run the following:
+
 ```bash
 ansible-playbook -i hosts -u root -k playbook/main.yaml
 ```
@@ -27,12 +28,12 @@ sudo systemctl enable vncserver@:1.service
 After this, you'll to edit your `$HOME/.vnc/xstartup` and add this to the _bottom_
 of the file:
 
-```
+```text
 /usr/bin/gnome-session
 ```
 
 Now you should be able to use a [vncviewer][vncviewer] and connect with an
-`IP:1` with your supplied password. 
+`IP:1` with your supplied password.
 
 After this `crc` should be in your home directory and you can use `crc start` to
 start up your instance. Pull your secret from Red Hat and you should be
@@ -43,6 +44,14 @@ off to the races.
 This has been tested and works on:
 
 - CentOS 8
+
+## Security
+
+The default configuration enables direct connections to the VNC ports through iptables rules. If you are running the host for VNC and crc on an Internet-connected system, this is not a good idea. Instead, update the [vars/main.yml](./vars/main.yml) file changing `allowDirect` to false and instead tunnel your VNC connections through ssh using something like:
+
+```console
+ssh -L5901:127.0.0.1:5901 youruser@yourhost
+```
 
 ## License & Authors
 
