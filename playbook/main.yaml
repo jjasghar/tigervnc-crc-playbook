@@ -19,7 +19,7 @@
         state: stopped
         enabled: no
           
-    - name: install workstation dependancies
+    - name: install workstation dependencies
       dnf:
         name: '@workstation'
         state: present
@@ -48,6 +48,7 @@
         ctstate: NEW
         destination_port: 5801
         jump: ACCEPT
+      when: allowDirect
 
     - name: allow port 5901 into the machine
       iptables:
@@ -56,6 +57,7 @@
         ctstate: NEW
         destination_port: 5901
         jump: ACCEPT
+      when: allowDirect
 
     - name: allow port 6001 into the machine
       iptables:
@@ -64,6 +66,7 @@
         ctstate: NEW
         destination_port: 6001
         jump: ACCEPT
+      when: allowDirect
 
     - name: pull down crc to the machine
       unarchive:
