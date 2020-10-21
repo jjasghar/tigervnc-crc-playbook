@@ -25,14 +25,7 @@ sudo systemctl start vncserver@:1.service
 sudo systemctl enable vncserver@:1.service
 ```
 
-After this, you'll to edit your `$HOME/.vnc/xstartup` and add this to the _bottom_
-of the file:
-
-```text
-/usr/bin/gnome-session
-```
-
-Now you should be able to use a [vncviewer][vncviewer] and connect with an
+Now you should be able to use a [vncviewer][vncviewer] and connect with a destination of
 `IP:1` with your supplied password.
 
 After this `crc` should be in your home directory and you can use `crc start` to
@@ -52,6 +45,8 @@ The default configuration enables direct connections to the VNC ports through ip
 ```console
 ssh -L5901:127.0.0.1:5901 youruser@yourhost
 ```
+
+After the ssh connection is established, direct your vncviewer to destination 127.0.0.1:5901.
 
 ## License & Authors
 

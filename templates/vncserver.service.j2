@@ -38,7 +38,7 @@ Type=simple
 
 # Clean any existing files in /tmp/.X11-unix environment
 ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-ExecStart=/usr/bin/vncserver_wrapper {{ user }} %i -geometry {{ geometry }}
+ExecStart=/usr/bin/vncserver_wrapper {{ user }} %i
 ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
 
 [Install]
